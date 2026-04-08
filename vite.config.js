@@ -1,15 +1,12 @@
-import { defineConfig } from 'vite'
-import { resolve } from 'path'
-import { fileURLToPath } from 'url'
+const { defineConfig } = require('vite')
+const { resolve } = require('path')
 
-const root = fileURLToPath(new URL('.', import.meta.url))
-
-export default defineConfig({
+module.exports = defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(root, 'index.html'),
-        admin: resolve(root, 'admin.html'),
+        main: resolve(process.cwd(), 'index.html'),
+        admin: resolve(process.cwd(), 'admin.html'),
       },
     },
   },
