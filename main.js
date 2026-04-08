@@ -1,8 +1,8 @@
 import './style.css'
 import { createClient } from '@supabase/supabase-js'
 
-const SUPABASE_URL = 'https://gclkezaillkycgbhcqoy.supabase.co'
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjbGtlemFpbGxreWNnYmhjcW95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2MzkxNjksImV4cCI6MjA5MTIxNTE2OX0.0qg66_BchhM7ZLlR2X709xzEX8Pl6PqpDM3rcNmgpIs'
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY)
 
@@ -230,5 +230,9 @@ loadRatesBtn.addEventListener('click', async () => {
 loadRequestsBtn.addEventListener('click', loadRequests)
 requestForm.addEventListener('submit', createRequest)
 
-await loadRates()
-await loadRequests()
+async function init() {
+  await loadRates()
+  await loadRequests()
+}
+
+init()
