@@ -1,0 +1,169 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+  color: #1f2937;
+}
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+}
+
+.form {
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+input,
+select,
+button {
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+}
+
+th,
+td {
+  border: 1px solid #dbe2ea;
+  padding: 10px;
+  text-align: left;
+  font-size: 14px;
+}
+
+.message {
+  display: none;
+  padding: 12px;
+  background: #eef6ff;
+  border: 1px solid #bfd8ff;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.rates-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.rate-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 16px;
+  padding: 16px;
+  background: #fafcff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.rate-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  gap: 10px;
+}
+
+.pair-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.margin-badge {
+  font-size: 12px;
+  background: #eef2ff;
+  color: #334155;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+
+.rate-block {
+  border-radius: 12px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border: 1px solid #e5e7eb;
+  background: #f8fafc;
+}
+
+.rate-block:last-child {
+  margin-bottom: 0;
+}
+
+.rate-label {
+  font-size: 13px;
+  color: #475569;
+  margin-bottom: 6px;
+}
+
+.rate-main {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.rate-sub {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.rate-up {
+  background: #ecfdf3;
+  border-color: #bbf7d0;
+}
+
+.rate-up .rate-main {
+  color: #15803d;
+}
+
+.rate-down {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.rate-down .rate-main {
+  color: #b91c1c;
+}
+
+.rate-neutral {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+}
+
+.rate-neutral .rate-main {
+  color: #0f172a;
+}

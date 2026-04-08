@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>АСУ Обмен валюты</title>
+    <script type="module" src="/main.js"></script>
+  </head>
+  <body>
+    <div class="page">
+      <h1>АСУ «Обмен валюты»</h1>
+
+      <div class="toolbar">
+        <button id="loadRatesBtn">Обновить курсы</button>
+        <button id="loadRequestsBtn">Обновить заявки</button>
+      </div>
+
+      <div id="message" class="message"></div>
+
+      <section class="card">
+        <h2>Текущие внутренние курсы</h2>
+        <div id="ratesCards" class="rates-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Создать заявку</h2>
+        <form id="requestForm" class="form">
+          <label>
+            Email клиента
+            <input id="userEmail" type="text" value="client1@example.com" />
+          </label>
+
+          <label>
+            Валютная пара
+            <select id="pairSelect"></select>
+          </label>
+
+          <label>
+            Сумма
+            <input id="amountFrom" type="number" value="100" />
+          </label>
+
+          <button type="submit">Создать заявку</button>
+        </form>
+      </section>
+
+      <section class="card">
+        <h2>Заявки</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Клиент</th>
+              <th>Пара</th>
+              <th>Сумма</th>
+              <th>Курс</th>
+              <th>К получению</th>
+              <th>Статус</th>
+              <th>Дата</th>
+            </tr>
+          </thead>
+          <tbody id="requestsBody"></tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>
