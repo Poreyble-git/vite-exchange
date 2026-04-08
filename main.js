@@ -16,6 +16,7 @@ const amountFromInput = document.getElementById('amountFrom')
 const loadRatesBtn = document.getElementById('loadRatesBtn')
 const loadRequestsBtn = document.getElementById('loadRequestsBtn')
 
+let charts = {}
 let currentRates = []
 let previousRatesMap = {}
 
@@ -224,15 +225,99 @@ loadRatesBtn.addEventListener('click', async () => {
   }
 
   await loadRates()
+  await loadCharts()
   showMessage('Курсы обновлены и сравнены с предыдущими значениями')
 })
+
+async function loadCharts() {
+  const { data, error } = await supabase
+    .from('internal_rates')
+    .select(`
+      buy_rate,
+      effective_from,
+      pair_id
+    `)
+    .order('effective_from', { ascending: true })
+
+  if (error) {
+    showMessage('Ошибка загрузки графиков: ' + error.message)
+    return
+  }
+
+  const { data: pairsData, error: pairsError } = await supabase
+    .from('pair_options_view')
+    .select('*')
+
+  if (pairsError) {
+    showMessage('Ошибка загрузки пар для графиков: ' + pairsError.message)
+    return
+  }
+
+  const getPairId = (from, to) => {
+    const found = pairsData.find(p => p.from_currency === from && p.to_currency === to)
+    return found ? found.pair_id : null
+  }
+
+  const pairMap = {
+    usdRub: getPairId('USD', 'RUB'),
+    usdEur: getPairId('USD', 'EUR'),
+    usdCny: getPairId('USD', 'CNY')
+  }
+
+  renderChart('chartUsdRub', data, pairMap.usdRub, 'USD → RUB')
+  renderChart('chartUsdEur', data, pairMap.usdEur, 'USD → EUR')
+  renderChart('chartUsdCny', data, pairMap.usdCny, 'USD → CNY')
+}
+
+function renderChart(canvasId, allRates, pairId, label) {
+  if (!pairId) return
+
+  const canvas = document.getElementById(canvasId)
+  if (!canvas) return
+
+  const filtered = allRates
+    .filter(item => item.pair_id === pairId)
+    .slice(-10)
+
+  const labels = filtered.map(item =>
+    new Date(item.effective_from).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  )
+
+  const values = filtered.map(item => Number(item.buy_rate))
+
+  if (charts[canvasId]) {
+    charts[canvasId].destroy()
+  }
+
+  charts[canvasId] = new Chart(canvas, {
+    type: 'line',
+    data: {
+      labels,
+      datasets: [
+        {
+          label,
+          data: values,
+          borderWidth: 2,
+          tension: 0.25
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  })
+}
 
 loadRequestsBtn.addEventListener('click', loadRequests)
 requestForm.addEventListener('submit', createRequest)
 
-async function init() {
-  await loadRates()
-  await loadRequests()
+function init() {
+  loadRates()
+  loadRequests()
+  loadCharts()
 }
 
 init()

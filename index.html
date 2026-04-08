@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>АСУ Обмен валюты</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="/main.js"></script>
   </head>
   <body>
     <div class="page">
-      <h1>АСУ «Обмен валюты»</h1>
+      <div class="topbar">
+        <h1>АСУ «Обмен валюты»</h1>
+        <a class="admin-link" href="/admin.html">Админка</a>
+      </div>
 
       <div class="toolbar">
         <button id="loadRatesBtn">Обновить курсы</button>
@@ -20,6 +24,24 @@
       <section class="card">
         <h2>Текущие внутренние курсы</h2>
         <div id="ratesCards" class="rates-grid"></div>
+      </section>
+
+      <section class="card">
+        <h2>Динамика котировок</h2>
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3>USD → RUB</h3>
+            <canvas id="chartUsdRub"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>USD → EUR</h3>
+            <canvas id="chartUsdEur"></canvas>
+          </div>
+          <div class="chart-card">
+            <h3>USD → CNY</h3>
+            <canvas id="chartUsdCny"></canvas>
+          </div>
+        </div>
       </section>
 
       <section class="card">
@@ -42,25 +64,6 @@
 
           <button type="submit">Создать заявку</button>
         </form>
-      </section>
-
-      <section class="card">
-        <h2>Заявки</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Клиент</th>
-              <th>Пара</th>
-              <th>Сумма</th>
-              <th>Курс</th>
-              <th>К получению</th>
-              <th>Статус</th>
-              <th>Дата</th>
-            </tr>
-          </thead>
-          <tbody id="requestsBody"></tbody>
-        </table>
       </section>
     </div>
   </body>

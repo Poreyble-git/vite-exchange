@@ -167,3 +167,41 @@ td {
 .rate-neutral .rate-main {
   color: #0f172a;
 }
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.admin-link {
+  text-decoration: none;
+  color: #0f172a;
+  background: white;
+  border: 1px solid #dbe2ea;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.chart-card {
+  border: 1px solid #dbe2ea;
+  border-radius: 16px;
+  padding: 16px;
+  background: #fafcff;
+}
+
+.chart-card h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 16px;
+}

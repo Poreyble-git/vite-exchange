@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Админка — Обмен валюты</title>
+    <script type="module" src="/admin.js"></script>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="topbar">
+        <h1>Админка</h1>
+        <a class="admin-link" href="/">Клиентская страница</a>
+      </div>
+
+      <section id="loginCard" class="card" style="max-width: 420px;">
+        <h2>Доступ в админ-панель</h2>
+        <form id="adminLoginForm" class="form">
+          <label>
+            Пароль
+            <input id="adminPassword" type="password" placeholder="Введите пароль" />
+          </label>
+          <button type="submit">Войти</button>
+        </form>
+        <div id="adminMessage" class="message" style="margin-top: 12px;"></div>
+      </section>
+
+      <section id="adminPanel" class="card" style="display: none;">
+        <h2>Заявки</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Клиент</th>
+              <th>Пара</th>
+              <th>Сумма</th>
+              <th>Курс</th>
+              <th>К получению</th>
+              <th>Статус</th>
+              <th>Дата</th>
+              <th>Действие</th>
+            </tr>
+          </thead>
+          <tbody id="adminRequestsBody"></tbody>
+        </table>
+      </section>
+    </div>
+  </body>
+</html>
