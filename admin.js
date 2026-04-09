@@ -58,6 +58,7 @@ async function loadAdminRequests() {
     tr.innerHTML = `
       <td>${req.request_id}</td>
       <td>${req.full_name}</td>
+      <td>${req.email ?? ''}</td>
       <td>${req.from_currency} → ${req.to_currency}</td>
       <td>${req.amount_from}</td>
       <td>${req.rate_used ?? ''}</td>
@@ -66,12 +67,12 @@ async function loadAdminRequests() {
       <td>${new Date(req.created_at).toLocaleString()}</td>
       <td>
         <div style="display:grid; gap:6px;">
-          <button data-id="${req.request_id}" data-action="approved">Одобрить</button>
-          <button data-id="${req.request_id}" data-action="rejected">Отклонить</button>
-          <button data-id="${req.request_id}" data-action="completed">Завершить</button>
+         <button data-id="${req.request_id}" data-action="approved">Одобрить</button>
+         <button data-id="${req.request_id}" data-action="rejected">Отклонить</button>
+         <button data-id="${req.request_id}" data-action="completed">Завершить</button>
         </div>
       </td>
-    `
+`
     adminRequestsBody.appendChild(tr)
   }
 

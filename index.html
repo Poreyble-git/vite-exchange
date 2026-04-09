@@ -16,7 +16,6 @@
 
       <div class="toolbar">
         <button id="loadRatesBtn">Обновить курсы</button>
-        <button id="loadRequestsBtn">Обновить заявки</button>
       </div>
 
       <div id="message" class="message"></div>
@@ -49,7 +48,12 @@
         <form id="requestForm" class="form">
           <label>
             Email клиента
-            <input id="userEmail" type="text" value="client1@example.com" />
+            <input id="userEmail" type="text" placeholder="Например: client@example.com" />
+          </label>
+          
+          <label>
+            ФИО клиента
+            <input id="clientFullName" type="text" placeholder="Например: Иванов Иван Иванович" />
           </label>
 
           <label>
